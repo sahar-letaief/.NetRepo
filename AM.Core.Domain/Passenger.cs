@@ -59,9 +59,10 @@ namespace AM.Core.Domain
         }
 
         //TP1.QUESTION 12
-        string GetPassengerType()
+        public virtual string GetPassengerType()
         {
-
+           return "I am a passenger";
+                 
         }
     }
 }

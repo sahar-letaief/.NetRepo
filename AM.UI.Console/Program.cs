@@ -32,4 +32,14 @@ Plane plane3 = new Plane() {Capacity = 200 , PlaneId = 2 };
 
 #endregion
 
+Passenger passenger = new Passenger();
+Passenger traveller = new Traveller();
+Passenger staff = new Staff();
+
+Console.WriteLine(passenger.GetPassengerType());
+Console.WriteLine(traveller.GetPassengerType());
+Console.WriteLine(staff.GetPassengerType());
+
+
+
 
