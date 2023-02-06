@@ -31,7 +31,7 @@ Plane plane3 = new Plane() {Capacity = 200 , PlaneId = 2 };
 
 
 #endregion
-
+//TP1.Question12.b
 Passenger passenger = new Passenger();
 Passenger traveller = new Traveller();
 Passenger staff = new Staff();
@@ -41,5 +41,11 @@ Console.WriteLine(traveller.GetPassengerType());
 Console.WriteLine(staff.GetPassengerType());
 
 
-
+//TP1.Question13.c
+passenger.BirthDate = new DateTime(2020,6,2);
+passenger.GetAge(passenger);
+Console.WriteLine(passenger.age);
+ int age = 0;
+passenger.GetAge(new DateTime(2020, 6, 2),ref age);
+Console.WriteLine(age);
 

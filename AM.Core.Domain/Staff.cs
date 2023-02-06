@@ -17,9 +17,9 @@ namespace AM.Core.Domain
 
         public override string ToString()
         {
-            return base.ToString() + "Employment Date :" + EmploymentDate + ";Function :" + Function + ";Salary :" + Salary;
+            return base.ToString() + "Employment Date :" + EmploymentDate + ";Fuction :" + Function + ";Salary :" + Salary;
         }
-        public string GetPassengerType()
+        public override string GetPassengerType()
         {
             return base.GetPassengerType()+" I am a staff";
 

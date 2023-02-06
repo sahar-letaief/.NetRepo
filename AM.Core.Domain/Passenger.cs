@@ -22,12 +22,14 @@ namespace AM.Core.Domain
 
         public IList<Flight> Flights { get; set; }
 
+        public int age { get; set; }
+
 
         public override String ToString()
         {
             return "Birth Date : " + BirthDate + ";FirstName : " + FirstName + ";Last Name : " + LastName +
-                ";Email Address :" + EmailAddress + ";Tel Number :" + TelNumber + ";Passport Number :" + PassportNumber
-                ;
+                ";Email Address :" + EmailAddress + ";Tel Number :" + TelNumber + ";Passport Number :" + PassportNumber+
+               ";age :"+age ;
         }
 
         //TP1.QUESTION 11
@@ -63,6 +65,29 @@ namespace AM.Core.Domain
         {
            return "I am a passenger";
                  
+        }
+
+
+        //passage par reference pour modifier la valeur passé en parametre
+        public void GetAge(DateTime birthDate, ref int calculatedAge){
+            //    calculatedAge = (DateTime.Now.Year - birthDate.Year);
+            //    if (DateTime.Now.Month < birthDate.Month) calculatedAge--;
+            //    else if (DateTime.Now.Month == birthDate.Month) {
+            //        if (DateTime.Now.Day < birthDate.Day) calculatedAge--;
+            //    }
+
+           if(birthDate.AddYears(calculatedAge) < DateTime.Now)
+            {
+                calculatedAge--;
+            }
+        }
+       public void GetAge(Passenger aPassenger)
+        {
+            aPassenger.age=(DateTime.Now.Year-aPassenger.BirthDate.Year);
+            if (aPassenger.BirthDate.AddYears(aPassenger.age) < DateTime.Now){
+                     aPassenger.age++;
+            }
+
         }
     }
 }
