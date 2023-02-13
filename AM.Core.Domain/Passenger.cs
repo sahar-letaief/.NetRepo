@@ -22,7 +22,21 @@ namespace AM.Core.Domain
 
         public IList<Flight> Flights { get; set; }
 
-        public int age { get; set; }
+        //TP1.Q14
+        public int age;
+        //soit private set ou on enléve get tout court (lecture seule)
+        public int Age {
+                get
+            {
+                age = (DateTime.Now.Year - BirthDate.Year);
+                if (BirthDate.AddYears(age) < DateTime.Now)
+                {
+                    age--;
+                }
+                return age;
+            }
+                
+                }
 
 
         public override String ToString()
@@ -69,19 +83,19 @@ namespace AM.Core.Domain
 
 
         //passage par reference pour modifier la valeur passé en parametre
-        public void GetAge(DateTime birthDate, ref int calculatedAge){
+       // public void GetAge(DateTime birthDate, ref int calculatedAge){
             //    calculatedAge = (DateTime.Now.Year - birthDate.Year);
             //    if (DateTime.Now.Month < birthDate.Month) calculatedAge--;
             //    else if (DateTime.Now.Month == birthDate.Month) {
             //        if (DateTime.Now.Day < birthDate.Day) calculatedAge--;
             //    }
 
-           if(birthDate.AddYears(calculatedAge) < DateTime.Now)
-            {
-                calculatedAge--;
-            }
-        }
-       public void GetAge(Passenger aPassenger)
+          // if(birthDate.AddYears(calculatedAge) < DateTime.Now)
+         //   {
+          //      calculatedAge--;
+         //   }
+      //  }
+       public void GetAge(DateTime dateTime, Passenger aPassenger)
         {
             aPassenger.age=(DateTime.Now.Year-aPassenger.BirthDate.Year);
             if (aPassenger.BirthDate.AddYears(aPassenger.age) < DateTime.Now){

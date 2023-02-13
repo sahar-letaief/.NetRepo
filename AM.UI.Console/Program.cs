@@ -43,9 +43,9 @@ Console.WriteLine(staff.GetPassengerType());
 
 //TP1.Question13.c
 passenger.BirthDate = new DateTime(2020,6,2);
-passenger.GetAge(passenger);
-Console.WriteLine(passenger.age);
+//passenger.GetAge(passenger);
+Console.WriteLine(passenger.GetAge);
  int age = 0;
-passenger.GetAge(new DateTime(2020, 6, 2),ref age);
+//passenger.GetAge(new DateTime(2020, 6, 2), ref age);
 Console.WriteLine(age);
 

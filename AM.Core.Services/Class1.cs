@@ -1,4 +1,4 @@
-﻿namespace AM.Core.Domain
+﻿namespace AM.Core.Services
 {
     public class Class1
     {
