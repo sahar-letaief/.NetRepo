@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using AM.Core.Domain;
+using AM.ApplicationCore.Services;
 
 Console.WriteLine("Hello, World!");
 
@@ -48,4 +49,48 @@ Console.WriteLine(passenger.GetAge);
  int age = 0;
 //passenger.GetAge(new DateTime(2020, 6, 2), ref age);
 Console.WriteLine(age);
+
+
+
+//TP2 
+Flight f=new Flight();
+Plane pl = new Plane(PlaneType.Airbus, 500, DateTime.Now);
+
+FlightService sf = new FlightService();
+//sf.Flights = TestData.listFlights;
+foreach (var flight in sf.GetFlightDates("Paris"))
+{
+    Console.WriteLine("Les dates sont");
+    Console.WriteLine(flight);
+
+};
+foreach (var flight in sf.getFlightDates2("Paris"))
+{
+    Console.WriteLine("Les dates sont");
+    Console.WriteLine(flight);
+
+};
+    Console.WriteLine("GetFlightFiltré");
+    sf.GetFlights("Destination", "Paris");
+    Console.WriteLine("Details de l'avion");
+    sf.ShowFlightDetails(pl);
+    Console.WriteLine(sf.GetDurationAverage("Madrid"));
+    Console.WriteLine("Les vols ordonnés :");
+foreach (var flight in sf.SortFlights())
+{
+
+    Console.WriteLine(flight);
+}
+
+    Console.WriteLine("Les Top 3 Travellers");
+
+foreach (var fl in sf.GetThreeOlderTravellers(f))
+{
+    Console.WriteLine(f);
+}
+Console.WriteLine("Les vols par Destination  :");
+
+    sf.ShowGroupedFlights(f);
+   
+
 
