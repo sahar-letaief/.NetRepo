@@ -10,98 +10,102 @@ namespace AM.Core.Domain
     {
         public DateTime BirthDate { get; set; }
 
-        public String FirstName { get; set; }
+        public string FirstName { get; set; }
 
-        public String LastName { get; set; }
+        public string LastName { get; set; }
 
-        public String EmailAddress { get; set; }
+        public string EmailAddress { get; set; }
 
-        public String TelNumber { get; set; }
+        public string TelNumber { get; set; }
 
-        public String PassportNumber { get; set; }
+        public string PassportNumber { get; set; }
 
         public IList<Flight> Flights { get; set; }
 
         //TP1.Q14
-        public int age;
-        //soit private set ou on enléve get tout court (lecture seule)
+        int age;
         public int Age {
-                get
-            {
+            get {
                 age = (DateTime.Now.Year - BirthDate.Year);
                 if (BirthDate.AddYears(age) < DateTime.Now)
                 {
                     age--;
                 }
                 return age;
-            }
-                
-                }
+            } 
+        }
 
 
-        public override String ToString()
+        public override string ToString()
         {
             return "Birth Date : " + BirthDate + ";FirstName : " + FirstName + ";Last Name : " + LastName +
-                ";Email Address :" + EmailAddress + ";Tel Number :" + TelNumber + ";Passport Number :" + PassportNumber+
-               ";age :"+age ;
+                ";Email Address :" + EmailAddress + ";Tel Number :" + TelNumber + ";Passport Number :" + PassportNumber
+                ;
         }
-
-        //TP1.QUESTION 11
-
-        bool CheckProfile(String first,String last)
-        {
-            //if(this.FirstName==first && this.LastName == last)
-            //{
-            //    return true;
-            //}
-            //return false;
-            return (this.FirstName == first && this.LastName == last);
-        }
-
-        //bool CheckProfile(String first, String last,String email)
+        // TP1.Question 11.a 
+        // 
+        // public bool CheckProfile(string firstname, string lastname)
         //{
-        //    return (this.FirstName == first && this.LastName == last && this.EmailAddress==email);
+        //    //if (this.FirstName== firstname && this.LastName == lastname) {
+        //    //    return true;
+        //    //}
+        //    //return false;
+        //    return FirstName == firstname && LastName == lastname;
+        //}
+        // TP1.Question 11.b 
+        //public bool CheckProfile(string firstname, string lastname,string email)
+        //{
+        //    return FirstName == firstname && LastName == lastname && EmailAddress == email;
         //}
 
-
-        // TP1.question 11.c
-        bool CheckProfile(String first, String last, String email=null)
+        // TP1.Question 11.c 
+        public bool CheckProfile(string firstname, string lastname, string email=null)
         {
-            if(email== null)  return (this.FirstName == first && this.LastName == last);
-            else
-            return (this.FirstName == first && this.LastName == last && this.EmailAddress == email);
+            //if (email == null)
+            //return FirstName == firstname && LastName == lastname;
+            //else
+            //return FirstName == firstname && LastName == lastname && EmailAddress == email;
 
-            //return (this.FirstName == first && this.LastName == last && (this.EmailAddress == email|| email==null));
+            return FirstName == firstname && LastName == lastname 
+                && ( EmailAddress == email || email == null) ;
+
         }
 
-        //TP1.QUESTION 12
-        public virtual string GetPassengerType()
+         public  virtual string GetPassengerType()
         {
-           return "I am a passenger";
-                 
+            return "I am Passenger ";
         }
 
 
-        //passage par reference pour modifier la valeur passé en parametre
-       // public void GetAge(DateTime birthDate, ref int calculatedAge){
-            //    calculatedAge = (DateTime.Now.Year - birthDate.Year);
-            //    if (DateTime.Now.Month < birthDate.Month) calculatedAge--;
-            //    else if (DateTime.Now.Month == birthDate.Month) {
-            //        if (DateTime.Now.Day < birthDate.Day) calculatedAge--;
-            //    }
-
-          // if(birthDate.AddYears(calculatedAge) < DateTime.Now)
-         //   {
-          //      calculatedAge--;
-         //   }
-      //  }
-       public void GetAge(DateTime dateTime, Passenger aPassenger)
+        public void GetAge(DateTime birthDate, ref int  calculatedAge)
         {
-            aPassenger.age=(DateTime.Now.Year-aPassenger.BirthDate.Year);
-            if (aPassenger.BirthDate.AddYears(aPassenger.age) < DateTime.Now){
-                     aPassenger.age++;
+           
+           calculatedAge  =  (DateTime.Now.Year - birthDate.Year);
+            if (birthDate.AddYears(calculatedAge) < DateTime.Now)
+            {
+                calculatedAge--;
             }
-
+         // 2eme méthode
+         //if (DateTime.Now.Month<birthDate.Month)
+         //   {
+         //       calculatedAge--;
+         //   }
+         //else if (DateTime.Now.Month == birthDate.Month) {
+         //       if (DateTime.Now.Day < birthDate.Day)
+         //       {
+         //           calculatedAge--;
+         //       }
+         //   }
         }
+
+      /* public  void GetAge(Passenger aPassenger)
+        {
+            aPassenger.Age = (DateTime.Now.Year - aPassenger.BirthDate.Year);
+            if (aPassenger.BirthDate.AddYears(aPassenger.Age) < DateTime.Now)
+            {
+                aPassenger.Age--;
+            }
+        }*/
+
     }
 }

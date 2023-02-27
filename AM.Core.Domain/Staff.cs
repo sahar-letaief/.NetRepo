@@ -19,10 +19,11 @@ namespace AM.Core.Domain
         {
             return base.ToString() + "Employment Date :" + EmploymentDate + ";Fuction :" + Function + ";Salary :" + Salary;
         }
+
+
         public override string GetPassengerType()
         {
-            return base.GetPassengerType()+" I am a staff";
-
+            return base.GetPassengerType() + " I am a staff  ";
         }
 
     }

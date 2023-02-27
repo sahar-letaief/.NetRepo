@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "izR9ohaDd7SqG6YERSBYomAxy+Y5LhOPe58majtyakqhpXeuMeOcprYNfuzbwpgspMS9J5EuN7Mm7/WYgE9DKA==",
+  "dgSpecHash": "Qko3BvXiyrGpIIi8aiRNw2gXzRq6wRWWGZrz4NMuE7a4bRRCf2tF+HFKsk2wxVqHlHO4CqL1kXz1A21rRIC64g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\sahar\\Desktop\\4ARCTIC\\S2\\.Net\\AirportManagement\\AM.Core.Domain\\AM.Core.Domain.csproj",
+  "projectFilePath": "C:\\Users\\sahar\\Desktop\\4ARCTIC\\S2\\.Net\\AirportManagement\\AM.Core.Extensions\\AM.Core.Extensions.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

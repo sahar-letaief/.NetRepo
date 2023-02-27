@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using AM.Core.Domain;
-using AM.ApplicationCore.Services;
+using AM.Core.Services;
+using AM.Core.Extensions;
 
 Console.WriteLine("Hello, World!");
 
@@ -32,65 +33,43 @@ Plane plane3 = new Plane() {Capacity = 200 , PlaneId = 2 };
 
 
 #endregion
-//TP1.Question12.b
+
+#region 6/02/2023
+//TP1.Q12.b
 Passenger passenger = new Passenger();
 Passenger traveller = new Traveller();
 Passenger staff = new Staff();
 
-Console.WriteLine(passenger.GetPassengerType());
-Console.WriteLine(traveller.GetPassengerType());
-Console.WriteLine(staff.GetPassengerType());
+//Console.WriteLine(passenger.GetPassengerType());
+//Console.WriteLine(traveller.GetPassengerType());
+//Console.WriteLine(staff.GetPassengerType());
 
-
-//TP1.Question13.c
-passenger.BirthDate = new DateTime(2020,6,2);
-//passenger.GetAge(passenger);
-Console.WriteLine(passenger.GetAge);
- int age = 0;
-//passenger.GetAge(new DateTime(2020, 6, 2), ref age);
+// TP1.Q13.c
+passenger.BirthDate = new DateTime(2020, 6, 2);
+passenger.GetAge(passenger);
+Console.WriteLine(passenger.Age);
+int age = 0;
+passenger.GetAge(new DateTime(2020, 6, 2), ref age);
 Console.WriteLine(age);
+#endregion
 
-
-
-//TP2 
-Flight f=new Flight();
-Plane pl = new Plane(PlaneType.Airbus, 500, DateTime.Now);
-
-FlightService sf = new FlightService();
-//sf.Flights = TestData.listFlights;
-foreach (var flight in sf.GetFlightDates("Paris"))
+//TP2 Q13 c
+IFlightService flightService = new FlightService();
+IFlightService.GetScore scoreByNbrFlight = delegate (Passenger p)
 {
-    Console.WriteLine("Les dates sont");
-    Console.WriteLine(flight);
-
+    return p.Flights.Count();
 };
-foreach (var flight in sf.getFlightDates2("Paris"))
-{
-    Console.WriteLine("Les dates sont");
-    Console.WriteLine(flight);
 
+IFlightService.GetScore scoreByNbrFlightTunis = delegate (Passenger p)
+{
+    return p.Flights
+    .Where(f=>f.Destination=="Tunis"|| f.Departure=="Tunis")
+    .Count();
 };
-    Console.WriteLine("GetFlightFiltré");
-    sf.GetFlights("Destination", "Paris");
-    Console.WriteLine("Details de l'avion");
-    sf.ShowFlightDetails(pl);
-    Console.WriteLine(sf.GetDurationAverage("Madrid"));
-    Console.WriteLine("Les vols ordonnés :");
-foreach (var flight in sf.SortFlights())
-{
 
-    Console.WriteLine(flight);
-}
-
-    Console.WriteLine("Les Top 3 Travellers");
-
-foreach (var fl in sf.GetThreeOlderTravellers(f))
-{
-    Console.WriteLine(f);
-}
-Console.WriteLine("Les vols par Destination  :");
-
-    sf.ShowGroupedFlights(f);
-   
+flightService.GetSeniorPassenger(scoreByNbrFlight);
+flightService.GetSeniorPassenger(scoreByNbrFlightTunis);
 
 
+//TP2 Q14
+Flight flight = new Flight();

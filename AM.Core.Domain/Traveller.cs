@@ -16,12 +16,11 @@ namespace AM.Core.Domain
         {
             return base.ToString() + "Nationality :" + Nationality + ";Health Information :" + HealthInformation;
         }
+
         public override string GetPassengerType()
         {
-            return "I am a traveller";
-
+            return "I am Traveller ";
         }
-
 
 
     }
